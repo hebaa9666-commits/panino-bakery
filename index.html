@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>PANINO | بانينو بيكري</title>
+
+    <meta name="description"
+        content="بانينو بيكري - مخبوزات - كحك - بسكويت - كرواسون - منين - منتجات دايت">
+
+    <meta name="keywords"
+        content="Panino,Bakery,بسكويت,كحك,كرواسون,عيش,منين,مخبوزات">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ====================== Header ====================== -->
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="header-right">
+
+            <button class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+        <div class="header-center">
+
+            <a href="index.html" class="logo">
+
+                <img src="./Picsart_24-09-01_00-50-31-926.png.png"
+                    alt="PANINO Logo">
+
+            </a>
+
+        </div>
+
+        <div class="header-left">
+
+            <a href="#" class="cart-btn" id="cart-btn">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-count">0</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ====================== Navigation ====================== -->
+
+<nav class="navbar">
+
+    <div class="container">
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html" class="active">الرئيسية</a>
+            </li>
+
+            <li>
+                <a href="menu.html">المنيو</a>
+            </li>
+
+            <li>
+                <a href="offers.html">العروض</a>
+            </li>
+
+            <li>
+                <a href="best-sellers.html">الأكثر مبيعاً</a>
+            </li>
+
+            <li>
+                <a href="branches.html">الفروع</a>
+            </li>
+
+            <li>
+                <a href="about.html">من نحن</a>
+            </li>
+
+            <li>
+                <a href="contact.html">تواصل معنا</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- ====================== Mobile Menu ====================== -->
+
+<div class="mobile-menu">
+
+    <div class="mobile-header">
+
+        <img src="./Picsart_24-09-01_00-50-31-926.png.png"
+            alt="PANINO">
+
+        <button class="close-menu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <ul>
+
+        <li><a href="index.html">الرئيسية</a></li>
+
+        <li><a href="menu.html">المنيو</a></li>
+
+        <li><a href="offers.html">العروض</a></li>
+
+        <li><a href="best-sellers.html">الأكثر مبيعاً</a></li>
+
+        <li><a href="branches.html">الفروع</a></li>
+
+        <li><a href="about.html">من نحن</a></li>
+
+        <li><a href="contact.html">تواصل معنا</a></li>
+
+    </ul>
+
+</div>
+
+<div class="menu-overlay"></div>
+
+
+<!-- ====================== Delivery Section ====================== -->
+
+<section class="delivery-section">
+
+    <div class="container">
+
+        <div class="delivery-box">
+
+            <div class="delivery-icon"></div>
+
+            <div class="delivery-text">
+
+                <h4>اختر منطقة التوصيل</h4>
+
+                <p id="selected-location-text">
+                    حدد منطقتك لعرض المنتجات المتاحة
+                </p>
+
+            </div>
+
+            <button class="delivery-btn" id="open-location-btn">
+                اختر الآن
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= Location Modal ================= -->
+
+<div class="location-overlay" id="location-overlay">
+
+    <div class="location-modal">
+
+        <div class="location-modal-header">
+
+            <div>
+
+                <span>توصيل الطلب</span>
+
+                <h2>اختر موقعك</h2>
+
+            </div>
+
+            <button class="close-location" id="close-location">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="location-content">
+
+            <div class="location-step active" id="city-step">
+
+                <h3>اختر المدينة</h3>
+
+                <div class="location-options">
+
+                    <button class="location-option" data-city="القاهرة">
+
+                        <i class="fa-solid fa-city"></i>
+
+                        <span>القاهرة</span>
+
+                    </button>
+
+                    <button class="location-option" data-city="الجيزة">
+
+                        <i class="fa-solid fa-city"></i>
+
+                        <span>الجيزة</span>
+
+                    </button>
+
+                    <button class="location-option" data-city="المحافظات">
+
+                        <i class="fa-solid fa-map-location-dot"></i>
+
+                        <span>محافظات</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="location-step" id="area-step">
+
+                <button class="back-location" id="back-to-city">
+                    رجوع
+                </button>
+
+                <h3 id="area-title">
+                    اختر المنطقة
+                </h3>
+
+                <div class="location-options" id="area-options"></div>
+
+            </div>
+
+
+            <div class="location-step" id="district-step">
+
+                <button class="back-location" id="back-to-area">
+                    رجوع
+                </button>
+
+                <h3 id="district-title">
+                    اختر الحي
+                </h3>
+
+                <div class="location-options" id="district-options"></div>
+
+            </div>
+
+
+            <div class="selected-location" id="selected-location">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <div>
+
+                    <span>موقع التوصيل المحدد</span>
+
+                    <strong id="final-location"></strong>
+
+                </div>
+
+            </div>
+
+
+            <button class="confirm-location" id="confirm-location">
+
+                <i class="fa-solid fa-check"></i>
+
+                تأكيد الموقع
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ====================== Hero Slider ====================== -->
+
+<section class="hero">
+
+    <div class="swiper heroSlider">
+
+        <div class="swiper-wrapper">
+
+
+            <!-- Slide 1 -->
+
+            <div class="swiper-slide">
+
+                <div class="hero-content">
+
+                    <div class="hero-text">
+
+                        <span class="subtitle">
+                            مرحباً بكم في بانينو
+                        </span>
+
+                        <h1>
+                            مخبوزات فريش <br>
+                            كل يوم
+                        </h1>
+
+                        <p>
+                            استمتع بأفضل أنواع الكرواسون، الكحك، البسكويت، العيش
+                            والمخبوزات الطازجة بجودة عالية ومذاق لا يُنسى
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="menu.html" class="btn-primary">
+                                اطلب الآن
+                            </a>
+
+                            <a href="menu.html" class="btn-secondary">
+                                تصفح المنيو
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-image">
+
+                        <img src="./WhatsApp Image 2026-09-19 at 1.31.49 PM.jpeg"
+                            alt="Panino Bakery">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Slide 2 -->
+
+            <div class="swiper-slide">
+
+                <div class="hero-content">
+
+                    <div class="hero-text">
+
+                        <span class="subtitle">
+                            عروض بانينو
+                        </span>
+
+                        <h1>
+                            خصومات مميزة <br>
+                            لفترة محدودة
+                        </h1>
+
+                        <p>
+                            اكتشف أحدث العروض على جميع منتجات بانينو
+                            واستمتع بأفضل الأسعار
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="offers.html" class="btn-primary">
+                                شاهد العروض
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-image">
+
+                        <img src="./FB_IMG_1788147424554.jpg"
+                            alt="Offers">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Slide 3 -->
+
+            <div class="swiper-slide">
+
+                <div class="hero-content">
+
+                    <div class="hero-text">
+
+                        <span class="subtitle">
+                            منتجات الدايت
+                        </span>
+
+                        <h1>
+                            طعم رائع <br>
+                            وسعرات أقل
+                        </h1>
+
+                        <p>
+                            تشكيلة مميزة من منتجات الدايت الصحية
+                            المناسبة لكل أفراد الأسرة
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="diet.html" class="btn-primary">
+                                اكتشف الآن
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-image">
+
+                        <img src="./دايت.jpeg"
+                            alt="Diet">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Categories ====================== -->
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>استكشف منتجاتنا</span>
+
+            <h2>أقسام بانينو</h2>
+
+            <p>
+                جميع منتجاتنا تُخبز يومياً بأجود المكونات لتصل إليك طازجة
+            </p>
+
+        </div>
+
+
+        <div class="categories-grid">
+
+
+            <!-- بسكويت -->
+
+            <a href="biscuits.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./بسكويت.jpeg"
+                        alt="بسكويت">
+
+                </div>
+
+                <h3>بسكويت</h3>
+
+            </a>
+
+
+            <!-- كحك -->
+
+            <a href="kahk.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./كحك.jpeg"
+                        alt="كحك">
+
+                </div>
+
+                <h3>كحك</h3>
+
+            </a>
+
+
+            <!-- عيش -->
+
+            <a href="bread.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./عيش.jpeg"
+                        alt="عيش">
+
+                </div>
+
+                <h3>عيش</h3>
+
+            </a>
+
+
+            <!-- دايت -->
+
+            <a href="diet.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./دايت.jpeg"
+                        alt="دايت">
+
+                </div>
+
+                <h3>دايت</h3>
+
+            </a>
+
+
+            <!-- كرواسون -->
+
+            <a href="croissant.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./FB_IMG_1788127786930.jpg"
+                        alt="كرواسون">
+
+                </div>
+
+                <h3>كرواسون</h3>
+
+            </a>
+
+
+            <!-- كيك -->
+
+            <a href="cake.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./كيك.jpeg"
+                        alt="كيك">
+
+                </div>
+
+                <h3>كيك</h3>
+
+            </a>
+
+
+            <!-- فطير -->
+
+            <a href="feteer.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./فطير.jpeg"
+                        alt="فطير">
+
+                </div>
+
+                <h3>فطير</h3>
+
+            </a>
+
+
+            <!-- منين -->
+
+            <a href="menen.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./منين.jpg"
+                        alt="منين">
+
+                </div>
+
+                <h3>منين</h3>
+
+            </a>
+
+
+            <!-- بقسماط -->
+
+            <a href="beskasmat.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./بقسماط.jpeg"
+                        alt="بقسماط">
+
+                </div>
+
+                <h3>بقسماط</h3>
+
+            </a>
+
+
+            <!-- بوكسات -->
+
+            <a href="boxes.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./الاكثر مبيعا (1).jpeg"
+                        alt="بوكسات">
+
+                </div>
+
+                <h3>بوكسات</h3>
+
+            </a>
+
+
+            <!-- ساليزون -->
+
+            <a href="salaison.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./FB_IMG_1788127720426.jpg"
+                        alt="ساليزون">
+
+                </div>
+
+                <h3>ساليزون</h3>
+
+            </a>
+
+
+            <!-- قطع -->
+
+            <a href="pieces.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./FB_IMG_1788127773170.jpg"
+                        alt="قطع">
+
+                </div>
+
+                <h3>قطع</h3>
+
+            </a>
+
+
+            <!-- مقرمشات -->
+
+            <a href="crackers.html" class="category-card">
+
+                <div class="category-image">
+
+                    <img src="./FB_IMG_1788127728966.jpg"
+                        alt="مقرمشات">
+
+                </div>
+
+                <h3>مقرمشات</h3>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Best Sellers ====================== -->
+
+<section class="best-sellers">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>الأكثر طلباً</span>
+
+            <h2>الأكثر مبيعاً</h2>
+
+            <p>
+                منتجاتنا الأكثر مبيعاً والتي يفضلها عملاؤنا يومياً
+            </p>
+
+        </div>
+
+
+        <div class="products-grid">
+
+
+            <div class="product-card">
+
+                <span class="badge">الأكثر مبيعاً</span>
+
+                <button class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+
+                <div class="product-image">
+
+                    <img src="./الاكثر مبيعا (1).jpeg"
+                        alt="بوكس منين">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="category">
+                        بوكس منين
+                    </span>
+
+                    <h3>
+                        بوكس منين
+                    </h3>
+
+                    <div class="price">
+
+                        <span class="new-price">
+                            230 ج.م
+                        </span>
+
+                        <span class="old-price">
+                            250 ج.م
+                        </span>
+
+                    </div>
+
+                    <button class="add-cart">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+
+                        أضف للسلة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <button class="wishlist">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <div class="product-image">
+
+                    <img src="./الاكثر مبيعا (4).jpeg"
+                        alt="بوكس ميني سندوتش">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="category">
+                        بوكس ميني سندوتش
+                    </span>
+
+                    <h3>
+                        بوكس ميني سندوتش
+                    </h3>
+
+                    <div class="price">
+
+                        <span class="new-price">
+                            250 ج.م
+                        </span>
+
+                    </div>
+
+                    <button class="add-cart">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+
+                        أضف للسلة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <button class="wishlist">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <div class="product-image">
+
+                    <img src="./الاكثر مبيعا (2).jpeg"
+                        alt="بيتزا ايطالي">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="category">
+                        بيتزا ايطالي
+                    </span>
+
+                    <h3>
+                        بيتزا ايطالي
+                    </h3>
+
+                    <div class="price">
+
+                        <span class="new-price">
+                            250 ج.م
+                        </span>
+
+                    </div>
+
+                    <button class="add-cart">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+
+                        أضف للسلة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <button class="wishlist">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <div class="product-image">
+
+                    <img src="./الاكثر مبيعا (3).jpeg"
+                        alt="ميني باتيه ميكس جبن">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="category">
+                        ميني باتيه ميكس جبن
+                    </span>
+
+                    <h3>
+                        ميني باتيه ميكس جبن
+                    </h3>
+
+                    <div class="price">
+
+                        <span class="new-price">
+                            250 ج.م
+                        </span>
+
+                    </div>
+
+                    <button class="add-cart">
+
+                        <i class="fa-solid fa-cart-plus"></i>
+
+                        أضف للسلة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="view-all">
+
+            <a href="menu.html" class="view-btn">
+                عرض جميع المنتجات
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Offers Banner ====================== -->
+
+<section class="offers-banner">
+
+    <div class="container">
+
+        <div class="offer-content">
+
+            <div class="offer-text">
+
+                <span class="offer-tag">
+                    عروض الأسبوع
+                </span>
+
+                <h2>
+
+                    استمتع بأفضل العروض من
+
+                    <span>PANINO</span>
+
+                </h2>
+
+                <p>
+
+                    خصومات حصرية على الكرواسون والكحك والبسكويت
+                    ومنتجات المخبوزات الطازجة لفترة محدودة
+
+                </p>
+
+                <div class="pnino-offers"></div>
+
+                <a href="menu.html" class="btn-primary">
+                    اطلب الآن
+                </a>
+
+                <a href="offers.html" class="btn-outline">
+                    جميع العروض
+                </a>
+
+            </div>
+
+            <div class="offer-image">
+
+                <img src="./FB_IMG_1788127709693.jpg"
+                    alt="PANINO Offers">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Products Tabs ====================== -->
+
+<section class="products-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>قائمة المنتجات</span>
+
+            <h2>اطلب حسب القسم</h2>
+
+        </div>
+
+
+        <div class="product-tabs">
+
+            <a href="menu.html" class="tab active">
+                الكل
+            </a>
+
+            <a href="biscuits.html" class="tab">
+                بسكويت
+            </a>
+
+            <a href="kahk.html" class="tab">
+                كحك
+            </a>
+
+            <a href="croissant.html" class="tab">
+                كرواسون
+            </a>
+
+            <a href="bread.html" class="tab">
+                عيش
+            </a>
+
+            <a href="cake.html" class="tab">
+                كيك
+            </a>
+
+            <a href="diet.html" class="tab">
+                دايت
+            </a>
+
+            <a href="feteer.html" class="tab">
+                فطير
+            </a>
+
+            <a href="menen.html" class="tab">
+                منين
+            </a>
+
+            <a href="boxes.html" class="tab">
+                بوكسات
+            </a>
+
+            <a href="salaison.html" class="tab">
+                ساليزون
+            </a>
+
+            <a href="beskasmat.html" class="tab">
+                بقسماط
+            </a>
+
+            <a href="pieces.html" class="tab">
+                قطع
+            </a>
+
+            <a href="crackers.html" class="tab">
+                مقرمشات
+            </a>
+
+        </div>
+
+
+        <div class="products-grid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Why Choose PANINO ====================== -->
+
+<section class="why-panino">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>
+                لماذا بانينو ؟
+            </span>
+
+            <h2>
+                نقدم لك أفضل جودة كل يوم
+            </h2>
+
+            <p>
+                نهتم بأدق التفاصيل لنقدم لك تجربة استثنائية في كل طلب
+            </p>
+
+        </div>
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-bread-slice"></i>
+
+                </div>
+
+                <h3>
+                    مخبوزات فريش
+                </h3>
+
+                <p>
+                    يتم تجهيز جميع المنتجات يومياً بأفضل المكونات
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                </div>
+
+                <h3>
+                    توصيل سريع
+                </h3>
+
+                <p>
+                    نوصل طلبك بسرعة مع الحفاظ على جودة المنتجات
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+                <h3>
+                    جودة مضمونة
+                </h3>
+
+                <p>
+                    خامات ممتازة وطعم مميز يرضي جميع العملاء
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-cookie-bite"></i>
+
+                </div>
+
+                <h3>
+                    تنوع كبير
+                </h3>
+
+                <p>
+                    تشكيلة واسعة من المخبوزات والحلويات الشرقية والغربية
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Customer Reviews ====================== -->
+
+<section class="testimonials">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>
+                آراء العملاء
+            </span>
+
+            <h2>
+                ماذا يقول عملاؤنا
+            </h2>
+
+            <p>
+                نفخر بثقة عملائنا ونسعى دائماً لتقديم أفضل تجربة
+            </p>
+
+        </div>
+
+
+        <div class="swiper testimonials-slider">
+
+            <div class="swiper-wrapper">
+
+
+                <div class="swiper-slide">
+
+                    <div class="testimonial-card">
+
+                        <div class="stars">
+
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+                        <p>
+                            أفضل كرواسون أكلته، والخدمة ممتازة والتوصيل سريع جداً
+                        </p>
+
+                        <div class="customer">
+
+                            <img src="images/customers/customer-1.jpg"
+                                alt="">
+
+                            <div>
+
+                                <h4>
+                                    محمد أحمد
+                                </h4>
+
+                                <span>
+                                    عميل دائم
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="swiper-slide">
+
+                    <div class="testimonial-card">
+
+                        <div class="stars">
+
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+                        <p>
+                            الكحك والبسكويت عند بانينو من أفضل المنتجات اللي جربتها
+                        </p>
+
+                        <div class="customer">
+
+                            <img src="images/customers/customer-2.jpg"
+                                alt="">
+
+                            <div>
+
+                                <h4>
+                                    سارة علي
+                                </h4>
+
+                                <span>
+                                    عميلة
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="swiper-slide">
+
+                    <div class="testimonial-card">
+
+                        <div class="stars">
+
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+                        <p>
+                            جودة ممتازة وأسعار مناسبة، وأنصح الجميع بتجربته
+                        </p>
+
+                        <div class="customer">
+
+                            <img src="images/customers/customer-3.jpg"
+                                alt="">
+
+                            <div>
+
+                                <h4>
+                                    أحمد خالد
+                                </h4>
+
+                                <span>
+                                    عميل
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Gallery ====================== -->
+
+<section class="gallery">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>
+                من داخل بانينو
+            </span>
+
+            <h2>
+                معرض الصور
+            </h2>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <img src="./داخل المعرض.jpeg" alt="">
+
+            <img src="./داخل المعرض 2.jpeg" alt="">
+
+            <img src="./داخل المعرض 3.jpeg" alt="">
+
+            <img src="./داخل المعرض 4.jpeg" alt="">
+
+            <img src="./داخل المعرض 5.jpeg" alt="">
+
+            <img src="./FB_IMG_1788147424554.jpg" alt="">
+
+            <img src="./معرض6 (1).jpeg" alt="">
+
+            <img src="./معرض6 (2).jpeg" alt="">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Branches ====================== -->
+
+<section class="branches" id="branches">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>
+                فروعنا
+            </span>
+
+            <h2>
+                زور أقرب فرع ليك
+            </h2>
+
+            <p>
+                فروع بانينو لخدمتك وتوصيل طلباتك بأفضل جودة
+            </p>
+
+        </div>
+
+
+        <div class="branches-grid">
+
+
+            <div class="branch-card">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>
+                    فرع 15 مايو
+                </h3>
+
+                <p>
+                    مدينة 15 مايو - مجاورة 3 - كومباوند وسط البلد
+                    - بجوار كارفور
+                </p>
+
+                <a href="#"
+                    class="branch-location">
+                    عرض الموقع
+                </a>
+
+            </div>
+
+
+            <div class="branch-card">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>
+                    فرع حلوان
+                </h3>
+
+                <p>
+                    شارع شريف تقاطع راغب
+                    - بجوار Healthy & Tasty
+                </p>
+
+                <a href="https://maps.app.goo.gl/9kQaH8evmdgPzmuT6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="branch-location">
+                    عرض الموقع
+                </a>
+
+            </div>
+
+
+            <div class="branch-card">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>
+                    فرع زهراء المعادي
+                </h3>
+
+                <p>
+                    شارع السعادة - بجوار كارفور
+                    - أمام سيراميكا كليوباترا
+                </p>
+
+                <a href="#"
+                    class="branch-location">
+                    عرض الموقع
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Newsletter ====================== -->
+
+<section class="newsletter">
+
+    <div class="container">
+
+        <div class="newsletter-content">
+
+            <div>
+
+                <h2>
+                    اشترك في نشرتنا البريدية
+                </h2>
+
+                <p>
+                    اعرف أحدث العروض والمنتجات أول بأول
+                </p>
+
+            </div>
+
+            <form>
+
+                <input type="email"
+                    placeholder="اكتب بريدك الإلكتروني">
+
+                <button type="submit">
+                    اشترك الآن
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ====================== Footer ====================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-about">
+
+                <h3>
+                    روابط سريعة
+                </h3>
+
+                <div class="social">
+
+
+                    <a href="https://www.facebook.com/share/19HV2Z4Yj9/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fab fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fab fa-instagram"></i>
+
+                    </a>
+
+
+                    <a href="https://www.tiktok.com/@panino.bakery?_r=1&_t=ZS-99HKA3JmZF9"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fab fa-tiktok"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- الأقسام -->
+
+            <div>
+
+                <h3>
+                    الأقسام
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            الرئيسية
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="menu.html">
+                            المنيو
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="offers.html">
+                            العروض
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="branches.html">
+                            الفروع
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="biscuits.html">
+                            بسكويت
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="kahk.html">
+                            كحك
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="croissant.html">
+                            كرواسون
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="bread.html">
+                            عيش
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cake.html">
+                            كيك
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- باقي الأقسام -->
+
+            <div>
+
+                <h3>
+                    المزيد من الأقسام
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="diet.html">
+                            دايت
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="feteer.html">
+                            فطير
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="menen.html">
+                            منين
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="boxes.html">
+                            بوكسات
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="salaison.html">
+                            ساليزون
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="beskasmat.html">
+                            بقسماط
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="pieces.html">
+                            قطع
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="crackers.html">
+                            مقرمشات
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- تواصل معنا -->
+
+            <div>
+
+                <h3>
+                    تواصل معنا
+                </h3>
+
+                <ul>
+
+                    <li>
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        01099944329
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <a href="mailto:Paninobakery20@gmail.com">
+
+                            Paninobakery20@gmail.com
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        القاهرة - مصر
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 PANINO Bakery جميع الحقوق محفوظة
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ====================== WhatsApp ====================== -->
+
+<a href="https://wa.me/201099944329"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    <i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+<!-- ====================== Scroll Top ====================== -->
+
+<a href="#"
+    class="scroll-top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</a>
+
+
+<!-- ====================== Swiper JS ====================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="Script.js"></script>
+
+
+</body>
+
+</html>
