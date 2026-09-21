@@ -1063,8 +1063,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       OPEN / CLOSE CART
-       FIXED
+       OPEN CART
     ================================================== */
 
     function openCart() {
@@ -1078,11 +1077,15 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("cart-overlay");
 
         if (modal) {
+
             modal.classList.add("active");
+
         }
 
         if (overlay) {
+
             overlay.classList.add("active");
+
         }
 
         document.body.style.overflow = "hidden";
@@ -1092,20 +1095,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* ==================================================
+       CLOSE CART
+       IMPORTANT:
+       Remove the entire modal from the DOM
+    ================================================== */
+
     function closeCart() {
 
         const modal =
             document.getElementById("cart-modal");
 
-        const overlay =
-            document.getElementById("cart-overlay");
-
-        if (overlay) {
-            overlay.classList.remove("active");
-        }
-
         if (modal) {
-            modal.classList.remove("active");
+
+            modal.remove();
+
         }
 
         document.body.style.overflow = "";
