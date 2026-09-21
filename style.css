@@ -5200,8 +5200,14 @@ SMALL MOBILE
     position:fixed;
     inset:0;
     z-index:20000;
+    pointer-events:none;
+    visibility:hidden;
 }
 
+#cart-modal.active{
+    pointer-events:auto;
+    visibility:visible;
+}
 .cart-overlay{
     position:absolute;
     inset:0;
