@@ -1,33 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /*==================================================
-                        Mobile Menu
-    ==================================================*/
+    /* ==================================================
+       MOBILE MENU
+    ================================================== */
 
     const menuBtn = document.querySelector(".menu-btn");
     const mobileMenu = document.querySelector(".mobile-menu");
     const closeMenu = document.querySelector(".close-menu");
     const menuOverlay = document.querySelector(".menu-overlay");
 
-    if (menuBtn && mobileMenu) {
-
-        menuBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
+    function openMobileMenu() {
+        if (mobileMenu) {
             mobileMenu.classList.add("active");
+        }
 
-            if (menuOverlay) {
-                menuOverlay.classList.add("active");
-            }
-
-        });
-
+        if (menuOverlay) {
+            menuOverlay.classList.add("active");
+        }
     }
 
-
     function closeMobileMenu() {
-
         if (mobileMenu) {
             mobileMenu.classList.remove("active");
         }
@@ -35,86 +27,70 @@ document.addEventListener("DOMContentLoaded", function () {
         if (menuOverlay) {
             menuOverlay.classList.remove("active");
         }
-
     }
 
+    if (menuBtn) {
+        menuBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openMobileMenu();
+        });
+    }
 
     if (closeMenu) {
-        closeMenu.addEventListener("click", closeMobileMenu);
+        closeMenu.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+        });
     }
-
 
     if (menuOverlay) {
-        menuOverlay.addEventListener("click", closeMobileMenu);
+        menuOverlay.addEventListener("click", function () {
+            closeMobileMenu();
+        });
     }
 
-
     document.querySelectorAll(".mobile-menu a").forEach(function (link) {
-
-        link.addEventListener("click", closeMobileMenu);
-
+        link.addEventListener("click", function () {
+            closeMobileMenu();
+        });
     });
 
 
+    /* ==================================================
+       LOCATION / DELIVERY
+    ================================================== */
 
-    /*==================================================
-                    Location Modal
-    ==================================================*/
+    const locationOverlay = document.getElementById("location-overlay");
+    const openLocationBtn = document.getElementById("open-location-btn");
+    const closeLocationBtn = document.getElementById("close-location");
 
-    const locationOverlay =
-        document.getElementById("location-overlay");
+    const cityStep = document.getElementById("city-step");
+    const areaStep = document.getElementById("area-step");
+    const districtStep = document.getElementById("district-step");
 
-    const openLocationBtn =
-        document.getElementById("open-location-btn");
+    const areaTitle = document.getElementById("area-title");
+    const districtTitle = document.getElementById("district-title");
 
-    const closeLocationBtn =
-        document.getElementById("close-location");
+    const areaOptions = document.getElementById("area-options");
+    const districtOptions = document.getElementById("district-options");
 
-    const cityStep =
-        document.getElementById("city-step");
+    const backToCity = document.getElementById("back-to-city");
+    const backToArea = document.getElementById("back-to-area");
 
-    const areaStep =
-        document.getElementById("area-step");
+    const selectedLocation = document.getElementById("selected-location");
+    const finalLocation = document.getElementById("final-location");
+    const confirmLocation = document.getElementById("confirm-location");
 
-    const districtStep =
-        document.getElementById("district-step");
-
-    const areaTitle =
-        document.getElementById("area-title");
-
-    const districtTitle =
-        document.getElementById("district-title");
-
-    const areaOptions =
-        document.getElementById("area-options");
-
-    const districtOptions =
-        document.getElementById("district-options");
-
-    const backToCity =
-        document.getElementById("back-to-city");
-
-    const backToArea =
-        document.getElementById("back-to-area");
-
-    const selectedLocation =
-        document.getElementById("selected-location");
-
-    const finalLocation =
-        document.getElementById("final-location");
-
-    const confirmLocation =
-        document.getElementById("confirm-location");
+    const selectedLocationText =
+        document.getElementById("selected-location-text");
 
 
     let selectedCity = "";
     let selectedArea = "";
     let selectedDistrict = "";
 
-
-    /*==================================================
-                    Location Data
-    ==================================================*/
 
     const locationData = {
 
@@ -185,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 ]
 
             }
-
         },
 
 
@@ -245,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 ]
 
             }
-
         },
 
 
@@ -384,30 +358,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 ]
 
             }
-
         }
-
     };
-
-
-    function openLocation() {
-
-        if (!locationOverlay) return;
-
-        locationOverlay.classList.add("active");
-
-        showStep("city");
-
-    }
-
-
-    function closeLocation() {
-
-        if (!locationOverlay) return;
-
-        locationOverlay.classList.remove("active");
-
-    }
 
 
     function showStep(step) {
@@ -424,21 +376,39 @@ document.addEventListener("DOMContentLoaded", function () {
             districtStep.classList.remove("active");
         }
 
-
         if (step === "city" && cityStep) {
             cityStep.classList.add("active");
         }
-
 
         if (step === "area" && areaStep) {
             areaStep.classList.add("active");
         }
 
-
         if (step === "district" && districtStep) {
             districtStep.classList.add("active");
         }
+    }
 
+
+    function openLocation() {
+
+        if (!locationOverlay) {
+            return;
+        }
+
+        locationOverlay.classList.add("active");
+
+        showStep("city");
+    }
+
+
+    function closeLocation() {
+
+        if (!locationOverlay) {
+            return;
+        }
+
+        locationOverlay.classList.remove("active");
     }
 
 
@@ -447,6 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openLocationBtn.addEventListener("click", function (e) {
 
             e.preventDefault();
+            e.stopPropagation();
 
             openLocation();
 
@@ -457,10 +428,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (closeLocationBtn) {
 
-        closeLocationBtn.addEventListener(
-            "click",
-            closeLocation
-        );
+        closeLocationBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            closeLocation();
+
+        });
 
     }
 
@@ -470,9 +445,7 @@ document.addEventListener("DOMContentLoaded", function () {
         locationOverlay.addEventListener("click", function (e) {
 
             if (e.target === locationOverlay) {
-
                 closeLocation();
-
             }
 
         });
@@ -480,15 +453,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*==================================================
-                    اختيار المدينة
-    ==================================================*/
+    /* ==================================================
+       CITY SELECTION
+    ================================================== */
 
     document
         .querySelectorAll("#city-step .location-option")
         .forEach(function (button) {
 
-            button.addEventListener("click", function () {
+            button.addEventListener("click", function (e) {
+
+                e.preventDefault();
+                e.stopPropagation();
 
                 selectedCity = this.dataset.city;
 
@@ -496,13 +472,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                const data =
-                    locationData[selectedCity];
+                const data = locationData[selectedCity];
+
+                selectedArea = "";
+                selectedDistrict = "";
 
                 if (areaOptions) {
                     areaOptions.innerHTML = "";
                 }
-
 
                 if (areaTitle) {
 
@@ -513,11 +490,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
-
                 data.areas.forEach(function (area) {
 
                     const areaButton =
                         document.createElement("button");
+
+                    areaButton.type = "button";
 
                     areaButton.className =
                         "location-option";
@@ -527,10 +505,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <span>${area}</span>
                     `;
 
-
                     areaButton.addEventListener(
                         "click",
-                        function () {
+                        function (e) {
+
+                            e.preventDefault();
+                            e.stopPropagation();
 
                             selectedArea = area;
 
@@ -539,13 +519,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     );
 
-
                     if (areaOptions) {
                         areaOptions.appendChild(areaButton);
                     }
 
                 });
-
 
                 showStep("area");
 
@@ -556,26 +534,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadDistricts(area) {
 
-        const districts =
-            locationData[selectedCity]
-                .districts[area] || [area];
+        if (!locationData[selectedCity]) {
+            return;
+        }
 
+        const districts =
+            locationData[selectedCity].districts[area] || [area];
+
+        selectedDistrict = "";
 
         if (districtOptions) {
             districtOptions.innerHTML = "";
         }
-
 
         if (districtTitle) {
             districtTitle.textContent =
                 "اختر الحي أو المنطقة";
         }
 
-
         districts.forEach(function (district) {
 
             const districtButton =
                 document.createElement("button");
+
+            districtButton.type = "button";
 
             districtButton.className =
                 "location-option";
@@ -585,10 +567,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span>${district}</span>
             `;
 
-
             districtButton.addEventListener(
                 "click",
-                function () {
+                function (e) {
+
+                    e.preventDefault();
+                    e.stopPropagation();
 
                     selectedDistrict = district;
 
@@ -597,16 +581,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             );
 
-
             if (districtOptions) {
                 districtOptions.appendChild(districtButton);
             }
 
         });
 
-
         showStep("district");
-
     }
 
 
@@ -615,44 +596,37 @@ document.addEventListener("DOMContentLoaded", function () {
         const fullLocation =
             `${selectedCity} - ${selectedArea} - ${selectedDistrict}`;
 
-
         if (finalLocation) {
-            finalLocation.textContent =
-                fullLocation;
+            finalLocation.textContent = fullLocation;
         }
-
 
         if (selectedLocation) {
-            selectedLocation.style.display =
-                "flex";
+            selectedLocation.style.display = "flex";
         }
-
 
         if (confirmLocation) {
-            confirmLocation.style.display =
-                "block";
+            confirmLocation.style.display = "block";
         }
 
-
         showStep("district");
-
     }
 
 
     if (backToCity) {
 
-        backToCity.addEventListener("click", function () {
+        backToCity.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
 
             showStep("city");
 
             if (selectedLocation) {
-                selectedLocation.style.display =
-                    "none";
+                selectedLocation.style.display = "none";
             }
 
             if (confirmLocation) {
-                confirmLocation.style.display =
-                    "none";
+                confirmLocation.style.display = "none";
             }
 
         });
@@ -662,18 +636,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (backToArea) {
 
-        backToArea.addEventListener("click", function () {
+        backToArea.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
 
             showStep("area");
 
             if (selectedLocation) {
-                selectedLocation.style.display =
-                    "none";
+                selectedLocation.style.display = "none";
             }
 
             if (confirmLocation) {
-                confirmLocation.style.display =
-                    "none";
+                confirmLocation.style.display = "none";
             }
 
         });
@@ -683,87 +658,107 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (confirmLocation) {
 
-        confirmLocation.addEventListener("click", function () {
+        confirmLocation.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!selectedCity || !selectedArea || !selectedDistrict) {
+                return;
+            }
 
             const fullLocation =
                 `${selectedCity} - ${selectedArea} - ${selectedDistrict}`;
 
+            try {
+                localStorage.setItem(
+                    "paninoLocation",
+                    fullLocation
+                );
+            } catch (error) {
+                console.log("LocalStorage error:", error);
+            }
 
-            localStorage.setItem(
-                "paninoLocation",
-                fullLocation
-            );
-
+            if (selectedLocationText) {
+                selectedLocationText.textContent =
+                    `التوصيل إلى ${fullLocation}`;
+            }
 
             closeLocation();
-
-
-            const deliveryText =
-                document.querySelector(".delivery-text p");
-
-
-            if (deliveryText) {
-
-                deliveryText.textContent =
-                    `التوصيل إلى ${fullLocation}`;
-
-            }
 
         });
 
     }
 
 
-    /*==================================================
-                    استرجاع الموقع
-    ==================================================*/
+    /* ==================================================
+       RESTORE LOCATION
+    ================================================== */
 
-    const savedLocation =
-        localStorage.getItem("paninoLocation");
+    try {
 
+        const savedLocation =
+            localStorage.getItem("paninoLocation");
 
-    if (savedLocation) {
+        if (savedLocation && selectedLocationText) {
 
-        const deliveryText =
-            document.querySelector(".delivery-text p");
-
-
-        if (deliveryText) {
-
-            deliveryText.textContent =
+            selectedLocationText.textContent =
                 `التوصيل إلى ${savedLocation}`;
 
         }
 
+    } catch (error) {
+
+        console.log("Location storage error:", error);
+
     }
 
 
-    /*==================================================
-                    CART SYSTEM
-    ==================================================*/
+    /* ==================================================
+       CART SYSTEM
+    ================================================== */
 
     let cart = [];
 
     try {
 
-        cart =
-            JSON.parse(
-                localStorage.getItem("paninoCart")
-            ) || [];
+        const savedCart =
+            localStorage.getItem("paninoCart");
+
+        if (savedCart) {
+
+            const parsedCart =
+                JSON.parse(savedCart);
+
+            if (Array.isArray(parsedCart)) {
+                cart = parsedCart;
+            }
+
+        }
 
     } catch (error) {
 
         cart = [];
+
+        console.log("Cart storage error:", error);
 
     }
 
 
     function saveCart() {
 
-        localStorage.setItem(
-            "paninoCart",
-            JSON.stringify(cart)
-        );
+        try {
+
+            localStorage.setItem(
+                "paninoCart",
+                JSON.stringify(cart)
+            );
+
+        } catch (error) {
+
+            console.log("Could not save cart:", error);
+
+        }
 
     }
 
@@ -785,11 +780,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const cartCounts =
             document.querySelectorAll(".cart-count");
 
+        const count = getCartCount();
 
         cartCounts.forEach(function (cartCount) {
 
-            cartCount.textContent =
-                getCartCount();
+            cartCount.textContent = count;
 
         });
 
@@ -803,28 +798,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".menu-product-card, .product-card"
             );
 
-
         if (!productCard) {
             return null;
         }
 
-
         const nameElement =
             productCard.querySelector("h3");
-
 
         if (!nameElement) {
             return null;
         }
 
-
         const name =
             nameElement.textContent.trim();
 
-
         let priceElement =
             productCard.querySelector(".menu-price");
-
 
         if (!priceElement) {
 
@@ -833,30 +822,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
         if (!priceElement) {
             return null;
         }
-
 
         const priceText =
             priceElement.textContent
                 .replace(/[^\d.]/g, "");
 
-
         const price =
             parseFloat(priceText) || 0;
 
-
         const imageElement =
             productCard.querySelector("img");
-
 
         const image =
             imageElement
                 ? imageElement.getAttribute("src")
                 : "";
-
 
         return {
 
@@ -877,6 +860,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addToCart(product) {
 
+        if (!product) {
+            return;
+        }
+
         const existing =
             cart.find(function (item) {
 
@@ -887,7 +874,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (existing) {
 
-            existing.quantity += 1;
+            existing.quantity =
+                Number(existing.quantity || 0) + 1;
 
         } else {
 
@@ -905,32 +893,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    document.addEventListener("click", function (e) {
-
-        const button =
-            e.target.closest(".add-cart");
-
-
-        if (!button) {
-            return;
-        }
-
-
-        e.preventDefault();
-
-
-        const product =
-            getProductData(button);
-
-
-        if (product) {
-
-            addToCart(product);
-
-        }
-
-    });
-
+    /* ==================================================
+       CART MESSAGE
+    ================================================== */
 
     function showCartMessage(name) {
 
@@ -943,41 +908,20 @@ document.addEventListener("DOMContentLoaded", function () {
             message =
                 document.createElement("div");
 
-
             message.className =
                 "cart-message";
 
-
-            message.style.position =
-                "fixed";
-
-            message.style.bottom =
-                "90px";
-
-            message.style.right =
-                "20px";
-
-            message.style.zIndex =
-                "20000";
-
-            message.style.background =
-                "#4b2e1f";
-
-            message.style.color =
-                "#fff";
-
-            message.style.padding =
-                "14px 20px";
-
-            message.style.borderRadius =
-                "12px";
-
-            message.style.fontSize =
-                "14px";
-
+            message.style.position = "fixed";
+            message.style.bottom = "90px";
+            message.style.right = "20px";
+            message.style.zIndex = "20000";
+            message.style.background = "#4b2e1f";
+            message.style.color = "#fff";
+            message.style.padding = "14px 20px";
+            message.style.borderRadius = "12px";
+            message.style.fontSize = "14px";
             message.style.boxShadow =
                 "0 5px 20px rgba(0,0,0,.2)";
-
 
             document.body.appendChild(message);
 
@@ -987,9 +931,7 @@ document.addEventListener("DOMContentLoaded", function () {
         message.textContent =
             `تم إضافة ${name} إلى السلة`;
 
-
-        message.style.display =
-            "block";
+        message.style.display = "block";
 
 
         clearTimeout(message.timer);
@@ -998,31 +940,31 @@ document.addEventListener("DOMContentLoaded", function () {
         message.timer =
             setTimeout(function () {
 
-                message.style.display =
-                    "none";
+                message.style.display = "none";
 
             }, 2000);
 
     }
 
 
-    /*==================================================
-                    Create Cart Modal
-    ==================================================*/
+    /* ==================================================
+       CREATE CART MODAL
+    ================================================== */
 
     function createCartModal() {
 
-        if (document.getElementById("cart-modal")) {
+        let modal =
+            document.getElementById("cart-modal");
+
+        if (modal) {
             return;
         }
 
 
-        const modal =
+        modal =
             document.createElement("div");
 
-
-        modal.id =
-            "cart-modal";
+        modal.id = "cart-modal";
 
 
         modal.innerHTML = `
@@ -1043,8 +985,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         </div>
 
-
                         <button
+                            type="button"
                             class="close-cart"
                             id="close-cart">
 
@@ -1096,6 +1038,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                         <button
+                            type="button"
                             class="checkout-btn"
                             id="checkout-btn">
 
@@ -1114,43 +1057,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.body.appendChild(modal);
 
-
-        const closeCartButton =
-            document.getElementById("close-cart");
-
-
-        if (closeCartButton) {
-
-            closeCartButton.addEventListener(
-                "click",
-                closeCart
-            );
-
-        }
-
-
-        const overlay =
-            document.getElementById("cart-overlay");
-
-
-        if (overlay) {
-
-            overlay.addEventListener(
-                "click",
-                function (e) {
-
-                    if (e.target.id === "cart-overlay") {
-
-                        closeCart();
-
-                    }
-
-                }
-            );
-
-        }
-
-
         renderCart();
 
     }
@@ -1160,17 +1066,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         createCartModal();
 
-
         const overlay =
             document.getElementById("cart-overlay");
-
 
         if (overlay) {
 
             overlay.classList.add("active");
 
         }
-
 
         renderCart();
 
@@ -1182,7 +1085,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const overlay =
             document.getElementById("cart-overlay");
 
-
         if (overlay) {
 
             overlay.classList.remove("active");
@@ -1192,38 +1094,203 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* ==================================================
+       CART CLICK EVENTS
+    ================================================== */
+
     document.addEventListener("click", function (e) {
 
-        const cartButton =
-            e.target.closest(".cart-btn");
+        /* Add to cart */
 
+        const addButton =
+            e.target.closest(".add-cart");
 
-        if (!cartButton) {
+        if (addButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const product =
+                getProductData(addButton);
+
+            if (product) {
+                addToCart(product);
+            }
+
             return;
         }
 
 
-        e.preventDefault();
+        /* Cart button */
+
+        const cartButton =
+            e.target.closest(".cart-btn");
+
+        if (cartButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            openCart();
+
+            return;
+        }
 
 
-        openCart();
+        /* Close cart */
+
+        const closeCartButton =
+            e.target.closest("#close-cart");
+
+        if (closeCartButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            closeCart();
+
+            return;
+        }
+
+
+        /* Cart overlay */
+
+        if (
+            e.target.id === "cart-overlay"
+        ) {
+
+            closeCart();
+
+            return;
+        }
+
+
+        /* Quantity buttons */
+
+        const quantityButton =
+            e.target.closest(".quantity-btn");
+
+        if (quantityButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const index =
+                parseInt(
+                    quantityButton.dataset.index,
+                    10
+                );
+
+            const action =
+                quantityButton.dataset.action;
+
+            if (
+                Number.isNaN(index) ||
+                !cart[index]
+            ) {
+                return;
+            }
+
+
+            if (action === "increase") {
+
+                cart[index].quantity =
+                    Number(cart[index].quantity || 0) + 1;
+
+            }
+
+
+            if (action === "decrease") {
+
+                cart[index].quantity =
+                    Number(cart[index].quantity || 0) - 1;
+
+                if (cart[index].quantity <= 0) {
+
+                    cart.splice(index, 1);
+
+                }
+
+            }
+
+
+            saveCart();
+
+            updateCartCount();
+
+            renderCart();
+
+            return;
+        }
+
+
+        /* Remove item */
+
+        const removeButton =
+            e.target.closest(".remove-cart-item");
+
+        if (removeButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const index =
+                parseInt(
+                    removeButton.dataset.index,
+                    10
+                );
+
+            if (
+                !Number.isNaN(index) &&
+                cart[index]
+            ) {
+
+                cart.splice(index, 1);
+
+                saveCart();
+
+                updateCartCount();
+
+                renderCart();
+
+            }
+
+            return;
+        }
+
+
+        /* Checkout */
+
+        const checkoutButton =
+            e.target.closest("#checkout-btn");
+
+        if (checkoutButton) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            checkout();
+
+            return;
+        }
 
     });
 
+
+    /* ==================================================
+       RENDER CART
+    ================================================== */
 
     function renderCart() {
 
         const itemsContainer =
             document.getElementById("cart-items");
 
-
         const empty =
             document.getElementById("cart-empty");
 
-
         const footer =
             document.getElementById("cart-footer");
-
 
         const totalElement =
             document.getElementById("cart-total");
@@ -1240,16 +1307,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (cart.length === 0) {
 
             if (empty) {
-                empty.style.display =
-                    "flex";
+                empty.style.display = "flex";
             }
-
 
             if (footer) {
-                footer.style.display =
-                    "none";
+                footer.style.display = "none";
             }
-
 
             return;
 
@@ -1257,14 +1320,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (empty) {
-            empty.style.display =
-                "none";
+            empty.style.display = "none";
         }
 
-
         if (footer) {
-            footer.style.display =
-                "block";
+            footer.style.display = "block";
         }
 
 
@@ -1273,17 +1333,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cart.forEach(function (item, index) {
 
-            const itemTotal =
-                Number(item.price) *
-                Number(item.quantity);
+            const price =
+                Number(item.price) || 0;
 
+            const quantity =
+                Number(item.quantity) || 0;
+
+            const itemTotal =
+                price * quantity;
 
             total += itemTotal;
 
 
             const cartItem =
                 document.createElement("div");
-
 
             cartItem.className =
                 "cart-item";
@@ -1295,13 +1358,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     ${
                         item.image
-
                         ? `
                             <img
                                 src="${item.image}"
                                 alt="${item.name}">
                           `
-
                         : `
                             <i class="fa-solid fa-bread-slice"></i>
                           `
@@ -1316,15 +1377,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         ${item.name}
                     </h3>
 
-
                     <strong>
-                        ${item.price} جنيه
+                        ${price} جنيه
                     </strong>
 
 
                     <div class="cart-quantity">
 
                         <button
+                            type="button"
                             class="quantity-btn"
                             data-action="increase"
                             data-index="${index}">
@@ -1335,11 +1396,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                         <span>
-                            ${item.quantity}
+                            ${quantity}
                         </span>
 
 
                         <button
+                            type="button"
                             class="quantity-btn"
                             data-action="decrease"
                             data-index="${index}">
@@ -1354,6 +1416,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 <button
+                    type="button"
                     class="remove-cart-item"
                     data-index="${index}">
 
@@ -1379,109 +1442,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*==================================================
-                    Quantity + Remove
-    ==================================================*/
+    /* ==================================================
+       CHECKOUT / WHATSAPP
+    ================================================== */
 
-    document.addEventListener("click", function (e) {
-
-        const quantityButton =
-            e.target.closest(".quantity-btn");
-
-
-        if (quantityButton) {
-
-            const index =
-                parseInt(
-                    quantityButton.dataset.index
-                );
-
-
-            const action =
-                quantityButton.dataset.action;
-
-
-            if (!cart[index]) {
-                return;
-            }
-
-
-            if (action === "increase") {
-
-                cart[index].quantity += 1;
-
-            }
-
-
-            if (action === "decrease") {
-
-                cart[index].quantity -= 1;
-
-
-                if (cart[index].quantity <= 0) {
-
-                    cart.splice(index, 1);
-
-                }
-
-            }
-
-
-            saveCart();
-
-            updateCartCount();
-
-            renderCart();
-
-            return;
-
-        }
-
-
-        const removeButton =
-            e.target.closest(".remove-cart-item");
-
-
-        if (removeButton) {
-
-            const index =
-                parseInt(
-                    removeButton.dataset.index
-                );
-
-
-            if (cart[index]) {
-
-                cart.splice(index, 1);
-
-            }
-
-
-            saveCart();
-
-            updateCartCount();
-
-            renderCart();
-
-        }
-
-    });
-
-
-    /*==================================================
-                    Checkout
-    ==================================================*/
-
-    document.addEventListener("click", function (e) {
-
-        const checkoutButton =
-            e.target.closest("#checkout-btn");
-
-
-        if (!checkoutButton) {
-            return;
-        }
-
+    function checkout() {
 
         if (cart.length === 0) {
             return;
@@ -1494,8 +1459,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cart.forEach(function (item) {
 
+            const quantity =
+                Number(item.quantity) || 0;
+
+            const price =
+                Number(item.price) || 0;
+
             message +=
-                `${item.name} - الكمية: ${item.quantity} - ${item.price * item.quantity} جنيه\n`;
+                `${item.name} - الكمية: ${quantity} - ${price * quantity} جنيه\n`;
 
         });
 
@@ -1504,8 +1475,8 @@ document.addEventListener("DOMContentLoaded", function () {
             cart.reduce(function (sum, item) {
 
                 return sum +
-                    Number(item.price) *
-                    Number(item.quantity);
+                    Number(item.price || 0) *
+                    Number(item.quantity || 0);
 
             }, 0);
 
@@ -1524,18 +1495,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         window.open(
             whatsappURL,
-            "_blank"
+            "_blank",
+            "noopener,noreferrer"
         );
 
-    });
+    }
 
 
-
-    /*==================================================
-                    Swiper Sliders
-    ==================================================*/
+    /* ==================================================
+       SWIPER
+    ================================================== */
 
     if (typeof Swiper !== "undefined") {
+
 
         /* Hero Slider */
 
@@ -1544,6 +1516,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (heroSlider) {
+
+            const pagination =
+                heroSlider.querySelector(
+                    ".swiper-pagination"
+                );
+
 
             new Swiper(heroSlider, {
 
@@ -1559,16 +1537,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 speed: 800,
 
-                pagination: {
-
-                    el:
-                        heroSlider.querySelector(
-                            ".swiper-pagination"
-                        ),
-
-                    clickable: true
-
-                },
+                pagination: pagination
+                    ? {
+                        el: pagination,
+                        clickable: true
+                    }
+                    : undefined,
 
                 effect: "slide"
 
@@ -1577,70 +1551,72 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /* Testimonials Slider */
+        /* Testimonials */
 
         const testimonialsSlider =
-            document.querySelector(".testimonials-slider");
+            document.querySelector(
+                ".testimonials-slider"
+            );
 
 
         if (testimonialsSlider) {
 
-            new Swiper(testimonialsSlider, {
+            const pagination =
+                testimonialsSlider.querySelector(
+                    ".swiper-pagination"
+                );
 
-                loop: true,
 
-                autoplay: {
+            new Swiper(
+                testimonialsSlider,
+                {
 
-                    delay: 3500,
+                    loop: true,
 
-                    disableOnInteraction: false
+                    autoplay: {
 
-                },
+                        delay: 3500,
 
-                speed: 700,
-
-                slidesPerView: 1,
-
-                spaceBetween: 20,
-
-                pagination: {
-
-                    el:
-                        testimonialsSlider.querySelector(
-                            ".swiper-pagination"
-                        ),
-
-                    clickable: true
-
-                },
-
-                breakpoints: {
-
-                    768: {
-
-                        slidesPerView: 2
+                        disableOnInteraction: false
 
                     },
 
-                    1024: {
+                    speed: 700,
 
-                        slidesPerView: 3
+                    slidesPerView: 1,
+
+                    spaceBetween: 20,
+
+                    pagination: pagination
+                        ? {
+                            el: pagination,
+                            clickable: true
+                        }
+                        : undefined,
+
+                    breakpoints: {
+
+                        768: {
+                            slidesPerView: 2
+                        },
+
+                        1024: {
+                            slidesPerView: 3
+                        }
 
                     }
 
                 }
-
-            });
+            );
 
         }
 
     }
 
 
-
-    /*==================================================
-                    Scroll Top
-    ==================================================*/
+    /* ==================================================
+       SCROLL TOP
+    ================================================== */
 
     const scrollTop =
         document.querySelector(".scroll-top");
@@ -1654,7 +1630,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 e.preventDefault();
 
-
                 window.scrollTo({
 
                     top: 0,
@@ -1666,44 +1641,37 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 400) {
+
+                    scrollTop.style.opacity = "1";
+
+                    scrollTop.style.visibility =
+                        "visible";
+
+                } else {
+
+                    scrollTop.style.opacity = "0";
+
+                    scrollTop.style.visibility =
+                        "hidden";
+
+                }
+
+            },
+            { passive: true }
+        );
+
     }
 
 
-    window.addEventListener(
-        "scroll",
-        function () {
-
-            if (!scrollTop) {
-                return;
-            }
-
-
-            if (window.scrollY > 400) {
-
-                scrollTop.style.opacity =
-                    "1";
-
-                scrollTop.style.visibility =
-                    "visible";
-
-            } else {
-
-                scrollTop.style.opacity =
-                    "0";
-
-                scrollTop.style.visibility =
-                    "hidden";
-
-            }
-
-        }
-    );
-
-
-
-    /*==================================================
-                    Initial Cart
-    ==================================================*/
+    /* ==================================================
+       INITIALIZE
+    ================================================== */
 
     updateCartCount();
 
