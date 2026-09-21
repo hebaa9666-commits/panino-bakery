@@ -1062,18 +1062,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* ==================================================
+       OPEN / CLOSE CART
+       FIXED
+    ================================================== */
+
     function openCart() {
 
         createCartModal();
 
+        const modal =
+            document.getElementById("cart-modal");
+
         const overlay =
             document.getElementById("cart-overlay");
 
-        if (overlay) {
-
-            overlay.classList.add("active");
-
+        if (modal) {
+            modal.classList.add("active");
         }
+
+        if (overlay) {
+            overlay.classList.add("active");
+        }
+
+        document.body.style.overflow = "hidden";
 
         renderCart();
 
@@ -1082,14 +1094,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeCart() {
 
+        const modal =
+            document.getElementById("cart-modal");
+
         const overlay =
             document.getElementById("cart-overlay");
 
         if (overlay) {
-
             overlay.classList.remove("active");
-
         }
+
+        if (modal) {
+            modal.classList.remove("active");
+        }
+
+        document.body.style.overflow = "";
 
     }
 
